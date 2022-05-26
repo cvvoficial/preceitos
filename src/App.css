@@ -1,0 +1,16 @@
+.container {
+  background: lightblue;
+  overflow  : hidden;
+  cursor    : url('./cursor.png') 39 39, auto;
+  padding   : 0px;
+}
+
+.buttons {
+  position       : fixed;
+  bottom         : 0px;
+  display        : flex;
+  justify-content: center;
+  width          : 100%;
+  margin         : 10px;
+  z-index        : 10000;
+}
