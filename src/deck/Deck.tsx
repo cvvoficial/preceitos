@@ -7,12 +7,14 @@ import { Card } from './Card'
 import { DeckState } from '../state/dockState'
 
 export function Deck({ deckState }: { deckState: DeckState }) {
-  const { cards, bunch, bind } = deckState
+  const { cards, bunch, bind, activeIndex } = deckState
   return (
     <>
       {bunch.map(({ x, y, rot, scale }, i) => (
-        <animated.div className="deck" key={i} style={{ x, y, zIndex: 1000 - i }}>
-          {/* This is the card itself, we're binding our gesture to it (and inject its index so we know which is which) */}
+        <animated.div
+          className="deck"
+          key={i}
+          style={{ x, y, zIndex: i <= activeIndex ? 5000 - i : 1000 - i }}>
           <animated.div
             {...bind(i)}
             style={{
