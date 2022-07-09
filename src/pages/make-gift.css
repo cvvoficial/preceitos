@@ -5,6 +5,10 @@
     padding-left: 10%;  
 }
 
+.make-gif * {
+    width: 80%;
+}
+
 .make-gif label, .make-gif div {
     margin-top: 16px;
 }

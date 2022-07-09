@@ -29,7 +29,7 @@ export function MakeGift({ deckState }: { deckState: DeckState }) {
             </label>
             <input id="para" type="text" value={para} onChange={e => setPara(e.target.value)} />
             <div className='link'>
-                link: <input id='link' value={link} />
+                link: <input id='link' value={link||''} readOnly/>
             </div>
             <div className='buttons'>
                 <button onClick={copy} disabled={!link}>Copiar link</button>
