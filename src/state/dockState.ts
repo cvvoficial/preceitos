@@ -63,7 +63,10 @@ export function useDeckState(): DeckState {
             restartWith([...preceitos])
         },
         shuffle() {
-            restartWith([...preceitos].sort(() => Math.random() - 0.5))
+            restartWith(
+                [...preceitos].sort(
+                    () => Math.random() - 0.5
+                ).slice(0, 1))
         },
         select,
         setPage(nPage: Page) {
@@ -115,7 +118,7 @@ export function useDeckState(): DeckState {
                 config: { friction: 350, tension: active ? 800 : isGone ? 200 : 500 },
             }
         })
-        if (!active && activeIndex >= deckSize)
+        if (!active && activeIndex >= deckSize-1)
             setTimeout(() => {
                 setActiveIndex(0)
                 api.start(i => to(i,))
