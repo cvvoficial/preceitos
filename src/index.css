@@ -41,11 +41,6 @@ body {
   justify-content: center;
 }
 
-.buttonsA button {
-  width: 60%;
-  margin: 20%;
-}
-
 .button {
   display            : flex;
   flex-direction     : column;

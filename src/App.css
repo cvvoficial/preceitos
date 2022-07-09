@@ -5,7 +5,12 @@
   padding   : 0px;
 }
 
-.buttons {
+.buttonsH button {
+  width: 60%;
+  margin: 20%;
+}
+
+.buttonsW {
   position       : fixed;
   bottom         : 0px;
   display        : flex;

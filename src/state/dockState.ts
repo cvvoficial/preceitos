@@ -3,7 +3,10 @@ import { useSprings, SpringValue } from '@react-spring/web'
 import { ReactDOMAttributes, useDrag } from '@use-gesture/react'
 import { Preceito, preceitos } from '../deck/preceitos'
 
+export type Page = 'home' | 'work' | 'gift'
+
 export interface DeckState {
+    page: Page
     cards: Preceito[]
     bunch: Array<{
         x: SpringValue<number>;
@@ -16,9 +19,11 @@ export interface DeckState {
     reset(): void
     shuffle(): void
     select(index: number): void
+    setPage(page: Page): void
 }
 
 export function useDeckState(): DeckState {
+    const [page, setPage]=useState<Page>('home')
     const [cards, setCards] = useState(() => [...preceitos])
     const [activeIndex, setActiveIndex] = useState(0)
     const deckSize = cards.length
@@ -34,6 +39,7 @@ export function useDeckState(): DeckState {
     })
 
     return {
+        page,
         cards,
         bunch,
         bind,
@@ -44,7 +50,8 @@ export function useDeckState(): DeckState {
         shuffle() {
             restartWith([...preceitos].sort(() => Math.random() - 0.5))
         },
-        select
+        select,
+        setPage
     }
 
     function select(index: number) {
