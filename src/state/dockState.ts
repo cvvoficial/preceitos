@@ -23,7 +23,9 @@ export interface DeckState {
 }
 
 export function useDeckState(): DeckState {
-    const [page, setPage]=useState<Page>('home')
+    const [page, setPage] = useState<Page>(
+        window.location.hash.includes('GIFT')
+            ? 'gift' : 'home')
     const [cards, setCards] = useState(() => [...preceitos])
     const [activeIndex, setActiveIndex] = useState(0)
     const deckSize = cards.length
