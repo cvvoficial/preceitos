@@ -22,11 +22,15 @@ export function Gift() {
             setCnt((c) => (c + 1) % 1000)
         }
     }, [giftRef.current, cnt])
-    return <div className={`app fill center container`} style={{ position: 'relative' }}>
+    return <div className={`app fill center container`} style={{ position: 'relative' }} onClick={openGift}>
         <img src={gift} className="gift" ref={giftRef} />
         <div style={deStyle}>{de}</div>
         <div style={paraStyle}>{para}</div>
     </div>;
+    function openGift() {
+        window.location.hash = ''
+        setTimeout(() => window.location.reload(),10)
+    }
     function render() {
         const img = giftRef.current
         if (!img) return

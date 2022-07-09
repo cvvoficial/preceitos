@@ -8,7 +8,9 @@
 .buttonsH button {
   padding: 4px;
   width: 60%;
-  margin: 20%;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 10%;
 }
 
 .buttonsW {
