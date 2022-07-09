@@ -7,6 +7,7 @@ export type Page = 'home' | 'work' | 'gift' | 'make-gift'
 
 export interface DeckState {
     page: Page
+    size: number
     cards: Preceito[]
     bunch: Array<{
         x: SpringValue<number>;
@@ -54,6 +55,9 @@ export function useDeckState(): DeckState {
         }
     })
     return {
+        get size() {
+            return deckSize;
+        },
         page,
         cards,
         bunch,
@@ -121,8 +125,8 @@ export function useDeckState(): DeckState {
         if (!active && activeIndex >= deckSize - 1)
             setTimeout(() => {
                 // if (deckSize < 2) {
-                    setActiveIndex(0)
-                    api.start(i => to(i,))
+                setActiveIndex(0)
+                api.start(i => to(i,))
                 // } else {
                 //     restartWith([...preceitos])
                 // }

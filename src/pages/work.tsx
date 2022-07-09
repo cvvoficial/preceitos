@@ -10,8 +10,8 @@ export function Work({ deckState }: { deckState: DeckState }) {
             <Deck deckState={deckState} />
         </div>
         <div className='buttonsW'>
-            <button className="button" role="button" onClick={reset}>Recomeçar</button>
-            <button className="button" role="button" onClick={shuffle}>Sortear</button>
+            {deckState.size === 1 ? null : <button className="button" role="button" onClick={reset}>Recomeçar</button>}
+            <button className="button" role="button" onClick={shuffle}>{deckState.size === 1 ? "Sortear outro preceito" : "Sortear"}</button>
         </div>
     </div>
     function reset() {
