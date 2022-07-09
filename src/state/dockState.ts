@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useSprings, SpringValue } from '@react-spring/web'
 import { ReactDOMAttributes, useDrag } from '@use-gesture/react'
 import { Preceito, preceitos } from '../deck/preceitos'
 
-export type Page = 'home' | 'work' | 'gift'
+export type Page = 'home' | 'work' | 'gift' | 'make-gift'
 
 export interface DeckState {
     page: Page
@@ -24,8 +24,10 @@ export interface DeckState {
 
 export function useDeckState(): DeckState {
     const [page, setPage] = useState<Page>(
-        window.location.hash.includes('GIFT')
-            ? 'gift' : 'home')
+        () =>
+            window.location.hash.includes('GIFT')
+                ? 'gift' : 'home'
+    )
     const [cards, setCards] = useState(() => [...preceitos])
     const [activeIndex, setActiveIndex] = useState(0)
     const deckSize = cards.length
@@ -40,6 +42,17 @@ export function useDeckState(): DeckState {
         }
     })
 
+    useEffect(() => {
+        window.addEventListener('popstate', handlePopState);
+        return () => {
+            window.removeEventListener('popstate', handlePopState);
+        }
+        function handlePopState(e: PopStateEvent) {
+            console.log(e)
+            const page = e.state || 'home'
+            setPage(page)
+        }
+    })
     return {
         page,
         cards,
@@ -53,7 +66,10 @@ export function useDeckState(): DeckState {
             restartWith([...preceitos].sort(() => Math.random() - 0.5))
         },
         select,
-        setPage
+        setPage(nPage: Page) {
+            window.history.pushState(page, '', window.location.href)
+            setPage(nPage)
+        },
     }
 
     function select(index: number) {
