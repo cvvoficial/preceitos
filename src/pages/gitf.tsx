@@ -12,7 +12,7 @@ export function Gift() {
     useLayoutEffect(() => {
         const img = giftRef.current
         if (img) {
-            setTimeout(render, 100)
+            setTimeout(render, 10)
             window.addEventListener('resize', refresh)
             return () => {
                 window.removeEventListener('resize', refresh)
@@ -35,6 +35,11 @@ export function Gift() {
         const top = bounds.top;
         const height = bounds.bottom - top;
         const width = bounds.right - left;
+        if (!(height && width)) {
+            console.log({ height, width, cnt })
+            setCnt(c => c + 1)
+            return
+        }
         setDeStyle({
             position: 'absolute',
             visibility: 'visible',
