@@ -12,13 +12,12 @@ export function Gift() {
     useLayoutEffect(() => {
         const img = giftRef.current
         if (img) {
-            setTimeout(render, 10)
+            setTimeout(render, 100)
             window.addEventListener('resize', refresh)
             return () => {
                 window.removeEventListener('resize', refresh)
             }
         }
-        console.log(giftRef);
         function refresh() {
             setCnt((c) => (c + 1) % 1000)
         }

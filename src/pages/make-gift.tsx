@@ -14,7 +14,7 @@ export function MakeGift({ deckState }: { deckState: DeckState }) {
         setHash(nhash)
         setLink(
             de && para ?
-                window.location.origin + nhash
+                window.location.origin + window.location.pathname + nhash
                 : ''
         )
     }, [de, para])
