@@ -118,10 +118,14 @@ export function useDeckState(): DeckState {
                 config: { friction: 350, tension: active ? 800 : isGone ? 200 : 500 },
             }
         })
-        if (!active && activeIndex >= deckSize-1)
+        if (!active && activeIndex >= deckSize - 1)
             setTimeout(() => {
-                setActiveIndex(0)
-                api.start(i => to(i,))
+                // if (deckSize < 2) {
+                    setActiveIndex(0)
+                    api.start(i => to(i,))
+                // } else {
+                //     restartWith([...preceitos])
+                // }
             }, 600)
     }
 

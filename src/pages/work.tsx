@@ -15,7 +15,7 @@ export function Work({ deckState }: { deckState: DeckState }) {
         </div>
     </div>
     function reset() {
-        deckState.reset()
+        deckState.setPage('home')
     }
     function shuffle() {
         deckState.shuffle()
