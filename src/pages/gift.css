@@ -35,3 +35,10 @@
     font-size  : 36px;
     top: -24px;
 }
+
+.gift-open {
+    position: fixed;
+    right: 4px;
+    top: 4px;
+    font-size: small;
+}

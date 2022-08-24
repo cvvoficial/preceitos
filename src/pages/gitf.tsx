@@ -22,6 +22,9 @@ export function Gift() {
                 </span>
             </div>
         </div>
+        <div className="gift-open">
+            Clique para abrir seu presente
+        </div>
     </div>;
     function openGift() {
         window.location.hash = ''
